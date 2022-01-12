@@ -1,0 +1,24 @@
+SELECT 
+COUNT(ShipperID)
+FROM Orders
+WHERE ShipperID == 1
+
+-> Ans: 54
+
+SELECT e.LastName
+FROM Employees AS e, Orders AS o
+WHERE e.EmployeeID = o.EmployeeID
+GROUP BY o.EmployeeID
+ORDER BY COUNT(*) DESC
+LIMIT 1
+
+-> Ans: Peacock
+
+SELECT p.ProductName
+FROM Customers AS c, Orders AS o, Products AS p, OrderDetails AS od
+WHERE c.CustomerID = o.CustomerID and od.OrderID = o.OrderID and p.ProductID = od.ProductID and c.Country = "Germany"
+GROUP BY p.ProductID
+ORDER BY SUM(od.Quantity) DESC
+LIMIT 1
+
+Ans: Boston Crab Meat
